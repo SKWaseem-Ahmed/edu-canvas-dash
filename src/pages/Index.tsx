@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/enhanced-button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, GraduationCap, BookOpen, Award, ArrowRight } from "lucide-react";
+import { Users, GraduationCap, ArrowRight } from "lucide-react";
 
 const Index = () => {
   return (
@@ -34,16 +34,13 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex justify-center"
           >
             <Button asChild variant="premium" size="xl" className="gap-2">
               <Link to="/students">
                 Get Started
                 <ArrowRight className="w-5 h-5" />
               </Link>
-            </Button>
-            <Button variant="outline" size="xl">
-              Learn More
             </Button>
           </motion.div>
         </motion.div>
@@ -53,9 +50,9 @@ const Index = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20"
+          className="flex justify-center mt-20"
         >
-          <Card className="hover-glow text-center">
+          <Card className="hover-glow text-center max-w-md">
             <CardContent className="p-8">
               <div className="w-16 h-16 rounded-full bg-gradient-primary mx-auto mb-6 flex items-center justify-center">
                 <Users className="w-8 h-8 text-primary-foreground" />
@@ -63,30 +60,6 @@ const Index = () => {
               <h3 className="text-xl font-semibold mb-4 text-primary">Student Management</h3>
               <p className="text-muted-foreground">
                 Easily add, edit, and manage student profiles with comprehensive information tracking.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover-glow text-center">
-            <CardContent className="p-8">
-              <div className="w-16 h-16 rounded-full bg-gradient-secondary mx-auto mb-6 flex items-center justify-center">
-                <BookOpen className="w-8 h-8 text-secondary-foreground" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-secondary">Academic Tracking</h3>
-              <p className="text-muted-foreground">
-                Monitor grades, enrollment dates, and academic progress with detailed insights.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover-glow text-center">
-            <CardContent className="p-8">
-              <div className="w-16 h-16 rounded-full bg-accent mx-auto mb-6 flex items-center justify-center">
-                <Award className="w-8 h-8 text-accent-foreground" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-accent-foreground">Beautiful Interface</h3>
-              <p className="text-muted-foreground">
-                Enjoy a modern, responsive design with smooth animations and intuitive interactions.
               </p>
             </CardContent>
           </Card>
