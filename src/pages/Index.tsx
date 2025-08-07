@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/enhanced-button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, GraduationCap, ArrowRight } from "lucide-react";
+import { GraduationCap, ArrowRight } from "lucide-react";
 
 const Index = () => {
   return (
@@ -45,48 +45,7 @@ const Index = () => {
           </motion.div>
         </motion.div>
 
-        {/* Features Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="flex justify-center mt-20"
-        >
-          <Card className="hover-glow text-center max-w-md">
-            <CardContent className="p-8">
-              <div className="w-16 h-16 rounded-full bg-gradient-primary mx-auto mb-6 flex items-center justify-center">
-                <Users className="w-8 h-8 text-primary-foreground" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-primary">Student Management</h3>
-              <p className="text-muted-foreground">
-                Easily add, edit, and manage student profiles with comprehensive information tracking.
-              </p>
-            </CardContent>
-          </Card>
-        </motion.div>
 
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="text-center mt-20"
-        >
-          <Card className="glass-card max-w-2xl mx-auto">
-            <CardContent className="p-8">
-              <h2 className="text-3xl font-bold gradient-text mb-4">Ready to Get Started?</h2>
-              <p className="text-muted-foreground mb-6">
-                Join thousands of educators who trust our platform for student management.
-              </p>
-              <Button asChild variant="premium" size="lg" className="gap-2">
-                <Link to="/students">
-                  Manage Students
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
-        </motion.div>
       </div>
     </div>
   );
