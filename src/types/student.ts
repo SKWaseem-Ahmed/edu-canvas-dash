@@ -8,7 +8,7 @@ export interface Student {
   address: string;
   enrollmentDate: string;
   gpa?: number;
-  status: 'active' | 'inactive' | 'graduated';
+  status: 'studying' | 'working' | 'graduated';
 }
 
 export interface StudentFormData extends Omit<Student, 'id'> {}

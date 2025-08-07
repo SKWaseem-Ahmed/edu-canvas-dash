@@ -84,10 +84,10 @@ const StudentsPage = () => {
   };
 
   const getStats = () => {
-    const active = students.filter(s => s.status === 'active').length;
-    const inactive = students.filter(s => s.status === 'inactive').length;
+    const studying = students.filter(s => s.status === 'studying').length;
+    const working = students.filter(s => s.status === 'working').length;
     const graduated = students.filter(s => s.status === 'graduated').length;
-    return { active, inactive, graduated, total: students.length };
+    return { studying, working, graduated, total: students.length };
   };
 
   const stats = getStats();
@@ -133,8 +133,8 @@ const StudentsPage = () => {
                   <UserCheck className="w-5 h-5 text-success-foreground" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-success">{stats.active}</p>
-                  <p className="text-sm text-muted-foreground">Active</p>
+                  <p className="text-2xl font-bold text-success">{stats.studying}</p>
+                  <p className="text-sm text-muted-foreground">Studying</p>
                 </div>
               </div>
             </CardContent>
@@ -147,8 +147,8 @@ const StudentsPage = () => {
                   <UserX className="w-5 h-5 text-warning-foreground" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-warning">{stats.inactive}</p>
-                  <p className="text-sm text-muted-foreground">Inactive</p>
+                  <p className="text-2xl font-bold text-warning">{stats.working}</p>
+                  <p className="text-sm text-muted-foreground">Working</p>
                 </div>
               </div>
             </CardContent>
@@ -192,8 +192,8 @@ const StudentsPage = () => {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All Students</SelectItem>
-              <SelectItem value="active">Active</SelectItem>
-              <SelectItem value="inactive">Inactive</SelectItem>
+              <SelectItem value="studying">Studying</SelectItem>
+              <SelectItem value="working">Working</SelectItem>
               <SelectItem value="graduated">Graduated</SelectItem>
             </SelectContent>
           </Select>

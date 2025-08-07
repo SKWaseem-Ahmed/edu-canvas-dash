@@ -11,7 +11,7 @@ export const mockStudents: Student[] = [
     address: "123 Main Street, Springfield, IL 62701",
     enrollmentDate: "2023-08-15",
     gpa: 3.8,
-    status: "active"
+    status: "studying"
   },
   {
     id: "2",
@@ -23,7 +23,7 @@ export const mockStudents: Student[] = [
     address: "456 Oak Avenue, Chicago, IL 60601",
     enrollmentDate: "2024-01-10",
     gpa: 3.2,
-    status: "active"
+    status: "studying"
   },
   {
     id: "3",
@@ -35,7 +35,7 @@ export const mockStudents: Student[] = [
     address: "789 Pine Road, Naperville, IL 60540",
     enrollmentDate: "2021-09-01",
     gpa: 3.95,
-    status: "active"
+    status: "studying"
   },
   {
     id: "4",
@@ -47,7 +47,7 @@ export const mockStudents: Student[] = [
     address: "321 Elm Street, Peoria, IL 61601",
     enrollmentDate: "2022-08-20",
     gpa: 3.6,
-    status: "inactive"
+    status: "working"
   },
   {
     id: "5",
@@ -71,6 +71,6 @@ export const mockStudents: Student[] = [
     address: "987 Cedar Lane, Aurora, IL 60502",
     enrollmentDate: "2024-08-25",
     gpa: 3.4,
-    status: "active"
+    status: "studying"
   }
 ];

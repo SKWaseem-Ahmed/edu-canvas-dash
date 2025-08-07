@@ -36,7 +36,7 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
       address: '',
       enrollmentDate: new Date().toISOString().split('T')[0],
       gpa: undefined,
-      status: 'active' as const
+      status: 'studying' as const
     }
   });
 
@@ -174,8 +174,8 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
                     <SelectValue placeholder="Select status" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="active">Active</SelectItem>
-                    <SelectItem value="inactive">Inactive</SelectItem>
+                    <SelectItem value="studying">Studying</SelectItem>
+                    <SelectItem value="working">Working</SelectItem>
                     <SelectItem value="graduated">Graduated</SelectItem>
                   </SelectContent>
                 </Select>

@@ -15,8 +15,8 @@ interface StudentCardProps {
 export const StudentCard = ({ student, onEdit, onDelete, onView }: StudentCardProps) => {
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-success text-success-foreground';
-      case 'inactive': return 'bg-warning text-warning-foreground';
+      case 'studying': return 'bg-success text-success-foreground';
+      case 'working': return 'bg-warning text-warning-foreground';
       case 'graduated': return 'bg-primary text-primary-foreground';
       default: return 'bg-muted text-muted-foreground';
     }
