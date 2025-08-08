@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Student, StudentFormData } from "@/types/student";
-import { mockStudents } from "@/data/mockStudents";
+import { useStudents } from "@/hooks/useStudents";
 import { StudentForm } from "@/components/students/StudentForm";
 import { StudentDetails } from "@/components/students/StudentDetails";
 import { Button } from "@/components/ui/enhanced-button";
@@ -9,17 +9,15 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { useToast } from "@/hooks/use-toast";
-import { Plus, Search, Users, GraduationCap, UserCheck, UserX, Eye, Edit, Trash2 } from "lucide-react";
+import { Plus, Search, Users, GraduationCap, UserCheck, UserX, Eye, Edit, Trash2, Loader2 } from "lucide-react";
 
 const StudentsPage = () => {
-  const [students, setStudents] = useState<Student[]>(mockStudents);
+  const { students, isLoading, createStudent, updateStudent, deleteStudent } = useStudents();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const [detailsStudent, setDetailsStudent] = useState<Student | null>(null);
-  const { toast } = useToast();
 
   const filteredStudents = students.filter(student => {
     const matchesSearch = student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -30,32 +28,16 @@ const StudentsPage = () => {
   });
 
   const handleAddStudent = (data: StudentFormData) => {
-    const newStudent: Student = {
-      ...data,
-      id: Date.now().toString()
-    };
-    setStudents([...students, newStudent]);
+    createStudent(data);
     setIsFormOpen(false);
-    toast({
-      title: "Student Added",
-      description: `${newStudent.name} has been successfully added to the system.`,
-    });
   };
 
   const handleEditStudent = (data: StudentFormData) => {
     if (!selectedStudent) return;
     
-    const updatedStudent: Student = {
-      ...selectedStudent,
-      ...data
-    };
-    setStudents(students.map(s => s.id === selectedStudent.id ? updatedStudent : s));
+    updateStudent({ id: selectedStudent.id, data });
     setSelectedStudent(null);
     setIsFormOpen(false);
-    toast({
-      title: "Student Updated",
-      description: `${updatedStudent.name}'s information has been updated successfully.`,
-    });
   };
 
   const handleDeleteStudent = (studentId: string) => {
@@ -64,12 +46,7 @@ const StudentsPage = () => {
 
     const confirmed = window.confirm(`Are you sure you want to delete ${student.name}?`);
     if (confirmed) {
-      setStudents(students.filter(s => s.id !== studentId));
-      toast({
-        title: "Student Deleted",
-        description: `${student.name} has been removed from the system.`,
-        variant: "destructive",
-      });
+      deleteStudent(studentId);
     }
   };
 
@@ -91,6 +68,17 @@ const StudentsPage = () => {
   };
 
   const stats = getStats();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-subtle flex items-center justify-center">
+        <div className="flex items-center gap-2">
+          <Loader2 className="h-6 w-6 animate-spin text-primary" />
+          <span className="text-lg">Loading students...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
