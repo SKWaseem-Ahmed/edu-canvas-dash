@@ -2,15 +2,15 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Student, StudentFormData } from "@/types/student";
 import { mockStudents } from "@/data/mockStudents";
-import { StudentCard } from "@/components/students/StudentCard";
 import { StudentForm } from "@/components/students/StudentForm";
 import { StudentDetails } from "@/components/students/StudentDetails";
 import { Button } from "@/components/ui/enhanced-button";
 import { Input } from "@/components/ui/input";
-
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Search, Users, GraduationCap, UserCheck, UserX } from "lucide-react";
+import { Plus, Search, Users, GraduationCap, UserCheck, UserX, Eye, Edit, Trash2 } from "lucide-react";
 
 const StudentsPage = () => {
   const [students, setStudents] = useState<Student[]>(mockStudents);
@@ -192,31 +192,86 @@ const StudentsPage = () => {
           </Button>
         </motion.div>
 
-        {/* Students Grid */}
+        {/* Students Table */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="bg-card rounded-lg border shadow-sm"
         >
-          <AnimatePresence>
-            {filteredStudents.map((student, index) => (
-              <motion.div
-                key={student.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <StudentCard
-                  student={student}
-                  onEdit={openEditForm}
-                  onDelete={handleDeleteStudent}
-                  onView={setDetailsStudent}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Name</TableHead>
+                <TableHead>Email</TableHead>
+                <TableHead>Grade</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>GPA</TableHead>
+                <TableHead>Phone</TableHead>
+                <TableHead className="text-center">Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <AnimatePresence>
+                {filteredStudents.map((student, index) => (
+                  <TableRow
+                    key={student.id}
+                    className="hover:bg-muted/50"
+                  >
+                    <TableCell className="font-medium">{student.name}</TableCell>
+                    <TableCell>{student.email}</TableCell>
+                    <TableCell>{student.grade}</TableCell>
+                    <TableCell>
+                      <Badge 
+                        variant={
+                          student.status === 'studying' ? 'default' : 
+                          student.status === 'working' ? 'secondary' : 
+                          'outline'
+                        }
+                        className={
+                          student.status === 'studying' ? 'bg-success text-success-foreground' :
+                          student.status === 'working' ? 'bg-warning text-warning-foreground' :
+                          'bg-secondary text-secondary-foreground'
+                        }
+                      >
+                        {student.status.charAt(0).toUpperCase() + student.status.slice(1)}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>{student.gpa ? student.gpa.toFixed(2) : 'N/A'}</TableCell>
+                    <TableCell>{student.phone}</TableCell>
+                    <TableCell>
+                      <div className="flex items-center justify-center gap-2">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => setDetailsStudent(student)}
+                          className="h-8 w-8 p-0"
+                        >
+                          <Eye className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => openEditForm(student)}
+                          className="h-8 w-8 p-0"
+                        >
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleDeleteStudent(student.id)}
+                          className="h-8 w-8 p-0 text-destructive hover:text-destructive"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </AnimatePresence>
+            </TableBody>
+          </Table>
         </motion.div>
 
         {filteredStudents.length === 0 && (
