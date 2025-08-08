@@ -7,7 +7,7 @@ import { StudentForm } from "@/components/students/StudentForm";
 import { StudentDetails } from "@/components/students/StudentDetails";
 import { Button } from "@/components/ui/enhanced-button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Plus, Search, Users, GraduationCap, UserCheck, UserX } from "lucide-react";
@@ -112,7 +112,7 @@ const StudentsPage = () => {
           transition={{ delay: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8"
         >
-          <Card className="hover-glow">
+          <Card className={`hover-glow cursor-pointer transition-all ${statusFilter === 'all' ? 'ring-2 ring-primary shadow-glow' : ''}`} onClick={() => setStatusFilter('all')}>
             <CardContent className="p-6">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center">
@@ -120,13 +120,13 @@ const StudentsPage = () => {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-primary">{stats.total}</p>
-                  <p className="text-sm text-muted-foreground">Total Students</p>
+                  <p className="text-sm text-muted-foreground">All Students</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="hover-glow">
+          <Card className={`hover-glow cursor-pointer transition-all ${statusFilter === 'studying' ? 'ring-2 ring-success shadow-glow' : ''}`} onClick={() => setStatusFilter('studying')}>
             <CardContent className="p-6">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-success flex items-center justify-center">
@@ -140,7 +140,7 @@ const StudentsPage = () => {
             </CardContent>
           </Card>
 
-          <Card className="hover-glow">
+          <Card className={`hover-glow cursor-pointer transition-all ${statusFilter === 'working' ? 'ring-2 ring-warning shadow-glow' : ''}`} onClick={() => setStatusFilter('working')}>
             <CardContent className="p-6">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-warning flex items-center justify-center">
@@ -154,7 +154,7 @@ const StudentsPage = () => {
             </CardContent>
           </Card>
 
-          <Card className="hover-glow">
+          <Card className={`hover-glow cursor-pointer transition-all ${statusFilter === 'graduated' ? 'ring-2 ring-secondary shadow-glow' : ''}`} onClick={() => setStatusFilter('graduated')}>
             <CardContent className="p-6">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gradient-secondary flex items-center justify-center">
@@ -185,18 +185,6 @@ const StudentsPage = () => {
               className="pl-10"
             />
           </div>
-          
-          <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="w-full sm:w-48">
-              <SelectValue placeholder="Filter by status" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Students</SelectItem>
-              <SelectItem value="studying">Studying</SelectItem>
-              <SelectItem value="working">Working</SelectItem>
-              <SelectItem value="graduated">Graduated</SelectItem>
-            </SelectContent>
-          </Select>
 
           <Button variant="premium" onClick={openAddForm} className="gap-2">
             <Plus className="w-4 h-4" />
