@@ -52,10 +52,10 @@
     --ring: 213 94% 68%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(105 24% 63%), hsl(120 35% 91%));
+    --gradient-primary: linear-gradient(135deg, hsl(105 24% 63%), hsl(120 30% 75%));
     --gradient-secondary: linear-gradient(135deg, hsl(120 35% 91%), hsl(105 24% 63%));
-    --gradient-subtle: linear-gradient(180deg, hsl(40 67% 97%), hsl(40 60% 93%));
-    --gradient-card: linear-gradient(145deg, hsl(40 60% 93%), hsl(40 67% 97%));
+    --gradient-subtle: linear-gradient(180deg, hsl(40 67% 97%), hsl(40 50% 85%));
+    --gradient-card: linear-gradient(145deg, hsl(40 60% 93%), hsl(40 55% 88%));
 
     /* Shadows */
     --shadow-soft: 0 2px 20px -4px hsl(213 94% 68% / 0.1);
