@@ -7,39 +7,39 @@
 @layer base {
   :root {
     /* Main backgrounds */
-    --background: 220 15% 97%;
-    --foreground: 215 25% 15%;
+    --background: 40 67% 97%;
+    --foreground: 105 24% 25%;
 
     /* Card system */
-    --card: 0 0% 100%;
-    --card-foreground: 215 25% 15%;
+    --card: 40 60% 93%;
+    --card-foreground: 105 24% 25%;
 
     /* Popover system */
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 15%;
 
-    /* Primary education blue */
-    --primary: 213 94% 68%;
+    /* Primary nature green */
+    --primary: 105 24% 63%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 213 94% 85%;
-    --primary-dark: 213 94% 45%;
+    --primary-light: 105 24% 80%;
+    --primary-dark: 105 24% 45%;
 
-    /* Secondary warm green */
-    --secondary: 142 71% 45%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-light: 142 71% 85%;
+    /* Secondary soft green */
+    --secondary: 120 35% 91%;
+    --secondary-foreground: 105 24% 25%;
+    --secondary-light: 120 35% 95%;
 
     /* Muted grays */
     --muted: 220 13% 95%;
     --muted-foreground: 215 16% 47%;
 
-    /* Accent purple */
-    --accent: 262 83% 78%;
-    --accent-foreground: 262 83% 15%;
-    --accent-light: 262 83% 90%;
+    /* Accent cream */
+    --accent: 40 60% 93%;
+    --accent-foreground: 105 24% 35%;
+    --accent-light: 40 60% 96%;
 
     /* Status colors */
-    --success: 142 71% 45%;
+    --success: 105 24% 63%;
     --success-foreground: 0 0% 100%;
     --warning: 45 93% 58%;
     --warning-foreground: 45 93% 15%;
@@ -52,10 +52,10 @@
     --ring: 213 94% 68%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(213 94% 68%), hsl(262 83% 78%));
-    --gradient-secondary: linear-gradient(135deg, hsl(142 71% 45%), hsl(213 94% 68%));
-    --gradient-subtle: linear-gradient(180deg, hsl(220 15% 97%), hsl(220 13% 95%));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 13% 98%));
+    --gradient-primary: linear-gradient(135deg, hsl(105 24% 63%), hsl(120 35% 91%));
+    --gradient-secondary: linear-gradient(135deg, hsl(120 35% 91%), hsl(105 24% 63%));
+    --gradient-subtle: linear-gradient(180deg, hsl(40 67% 97%), hsl(40 60% 93%));
+    --gradient-card: linear-gradient(145deg, hsl(40 60% 93%), hsl(40 67% 97%));
 
     /* Shadows */
     --shadow-soft: 0 2px 20px -4px hsl(213 94% 68% / 0.1);
