@@ -51,10 +51,7 @@ export const StudentCard = ({ student, onEdit, onDelete, onView }: StudentCardPr
         
         <CardContent className="space-y-3">
           <div className="space-y-2 text-sm">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Mail className="w-4 h-4" />
-              <span>{student.email}</span>
-            </div>
+            
             <div className="flex items-center gap-2 text-muted-foreground">
               <Phone className="w-4 h-4" />
               <span>{student.phone}</span>

@@ -24,7 +24,6 @@ export const studentService = {
       .from('students')
       .insert({
         ...studentData,
-        enrollment_date: studentData.enrollmentDate
       })
       .select()
       .single()
@@ -45,7 +44,6 @@ export const studentService = {
       .from('students')
       .update({
         ...studentData,
-        enrollment_date: studentData.enrollmentDate,
         updated_at: new Date().toISOString()
       })
       .eq('id', id)

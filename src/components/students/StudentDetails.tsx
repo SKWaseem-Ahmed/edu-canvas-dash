@@ -3,7 +3,7 @@ import { Student } from "@/types/student";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/enhanced-button";
-import { X, User, Mail, Phone, MapPin, Calendar, GraduationCap, Star } from "lucide-react";
+import { X, User, Phone, MapPin, GraduationCap } from "lucide-react";
 
 interface StudentDetailsProps {
   student: Student;
@@ -60,13 +60,6 @@ export const StudentDetails = ({ student, onClose, onEdit }: StudentDetailsProps
               <h3 className="text-lg font-semibold text-primary">Contact Information</h3>
               
               <div className="space-y-3">
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
-                  <Mail className="w-5 h-5 text-primary" />
-                  <div>
-                    <p className="text-sm text-muted-foreground">Email</p>
-                    <p className="font-medium">{student.email}</p>
-                  </div>
-                </div>
 
                 <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
                   <Phone className="w-5 h-5 text-primary" />
@@ -106,23 +99,9 @@ export const StudentDetails = ({ student, onClose, onEdit }: StudentDetailsProps
                   </div>
                 </div>
 
-                {student.gpa && (
-                  <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
-                    <Star className="w-5 h-5 text-primary" />
-                    <div>
-                      <p className="text-sm text-muted-foreground">GPA</p>
-                      <p className="font-medium">{student.gpa}/4.0</p>
-                    </div>
-                  </div>
-                )}
+             
 
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
-                  <Calendar className="w-5 h-5 text-primary" />
-                  <div>
-                    <p className="text-sm text-muted-foreground">Enrollment Date</p>
-                    <p className="font-medium">{formatDate(student.enrollmentDate)}</p>
-                  </div>
-                </div>
+              
               </div>
             </div>
           </div>

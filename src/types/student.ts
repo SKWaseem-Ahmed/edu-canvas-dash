@@ -1,13 +1,10 @@
 export interface Student {
   id: string;
   name: string;
-  email: string;
   phone: string;
-  age: number;
-  grade: string;
-  address: string;
-  enrollmentDate: string;
-  gpa?: number;
+  age: number | null;
+  grade: string | null;
+  address: string | null;
   status: 'studying' | 'working' | 'graduated';
 }
 

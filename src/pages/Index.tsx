@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/enhanced-button";
-import { Card, CardContent } from "@/components/ui/card";
 import { GraduationCap, ArrowRight } from "lucide-react";
 
 const Index = () => {
@@ -22,7 +21,8 @@ const Index = () => {
           <h1 className="text-5xl md:text-6xl font-bold gradient-text mb-6">
             Student Management
             <br />
-            Made Beautiful
+            For Tableegh
+            <br />
           </h1>
           
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">

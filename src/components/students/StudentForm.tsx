@@ -19,23 +19,17 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
   const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm<StudentFormData>({
     defaultValues: student ? {
       name: student.name,
-      email: student.email,
       phone: student.phone,
       age: student.age,
       grade: student.grade,
       address: student.address,
-      enrollmentDate: student.enrollmentDate,
-      gpa: student.gpa,
       status: student.status
     } : {
       name: '',
-      email: '',
       phone: '',
       age: 18,
       grade: '',
       address: '',
-      enrollmentDate: new Date().toISOString().split('T')[0],
-      gpa: undefined,
       status: 'studying' as const
     }
   });
@@ -78,31 +72,14 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
                 )}
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  {...register('email', { 
-                    required: 'Email is required',
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: 'Invalid email address'
-                    }
-                  })}
-                  placeholder="student@example.com"
-                />
-                {errors.email && (
-                  <p className="text-sm text-destructive">{errors.email.message}</p>
-                )}
-              </div>
+              
 
               <div className="space-y-2">
                 <Label htmlFor="phone">Phone Number</Label>
                 <Input
                   id="phone"
                   {...register('phone', { required: 'Phone number is required' })}
-                  placeholder="+1 (555) 123-4567"
+                  placeholder="+91 9876543210"
                 />
                 {errors.phone && (
                   <p className="text-sm text-destructive">{errors.phone.message}</p>
@@ -114,11 +91,7 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
                 <Input
                   id="age"
                   type="number"
-                  {...register('age', { 
-                    required: 'Age is required',
-                    min: { value: 16, message: 'Age must be at least 16' },
-                    max: { value: 100, message: 'Age must be less than 100' }
-                  })}
+                  {...register('age')}
                   placeholder="18"
                 />
                 {errors.age && (
@@ -130,40 +103,11 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
                 <Label htmlFor="grade">Grade/Class</Label>
                 <Input
                   id="grade"
-                  {...register('grade', { required: 'Grade is required' })}
+                  {...register('grade')}
                   placeholder="12th Grade, Senior, etc."
                 />
                 {errors.grade && (
                   <p className="text-sm text-destructive">{errors.grade.message}</p>
-                )}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="gpa">GPA (Optional)</Label>
-                <Input
-                  id="gpa"
-                  type="number"
-                  step="0.01"
-                  {...register('gpa', { 
-                    min: { value: 0, message: 'GPA must be positive' },
-                    max: { value: 4, message: 'GPA cannot exceed 4.0' }
-                  })}
-                  placeholder="3.75"
-                />
-                {errors.gpa && (
-                  <p className="text-sm text-destructive">{errors.gpa.message}</p>
-                )}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="enrollmentDate">Enrollment Date</Label>
-                <Input
-                  id="enrollmentDate"
-                  type="date"
-                  {...register('enrollmentDate', { required: 'Enrollment date is required' })}
-                />
-                {errors.enrollmentDate && (
-                  <p className="text-sm text-destructive">{errors.enrollmentDate.message}</p>
                 )}
               </div>
 
@@ -186,7 +130,7 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
               <Label htmlFor="address">Address</Label>
               <Textarea
                 id="address"
-                {...register('address', { required: 'Address is required' })}
+                {...register('address')}
                 placeholder="Enter student's address"
                 rows={3}
               />

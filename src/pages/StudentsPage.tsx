@@ -21,7 +21,6 @@ const StudentsPage = () => {
 
   const filteredStudents = students.filter(student => {
     const matchesSearch = student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         student.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          student.grade.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = statusFilter === "all" || student.status === statusFilter;
     return matchesSearch && matchesStatus;
@@ -191,10 +190,8 @@ const StudentsPage = () => {
             <TableHeader>
               <TableRow>
                 <TableHead>Name</TableHead>
-                <TableHead>Email</TableHead>
                 <TableHead>Grade</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead>GPA</TableHead>
                 <TableHead>Phone</TableHead>
                 <TableHead className="text-center">Actions</TableHead>
               </TableRow>
@@ -207,7 +204,6 @@ const StudentsPage = () => {
                     className="hover:bg-muted/50"
                   >
                     <TableCell className="font-medium">{student.name}</TableCell>
-                    <TableCell>{student.email}</TableCell>
                     <TableCell>{student.grade}</TableCell>
                     <TableCell>
                       <Badge 
@@ -225,7 +221,6 @@ const StudentsPage = () => {
                         {student.status.charAt(0).toUpperCase() + student.status.slice(1)}
                       </Badge>
                     </TableCell>
-                    <TableCell>{student.gpa ? student.gpa.toFixed(2) : 'N/A'}</TableCell>
                     <TableCell>{student.phone}</TableCell>
                     <TableCell>
                       <div className="flex items-center justify-center gap-2">
