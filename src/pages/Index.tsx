@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/enhanced-button";
 import { GraduationCap, ArrowRight } from "lucide-react";
+import "../index.css";
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
             Student Management
             <br />
             For Tableegh
+            <br />
             <br />
           </h1>
           

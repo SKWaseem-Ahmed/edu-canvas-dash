@@ -7,9 +7,9 @@ import { StudentDetails } from "@/components/students/StudentDetails";
 import { Button } from "@/components/ui/enhanced-button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent} from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Plus, Search, Users, GraduationCap, UserCheck, UserX, Eye, Edit, Trash2, Loader2 } from "lucide-react";
+import { Plus, Search, Users, GraduationCap, UserCheck, Eye, Edit, Trash2, Loader2, Earth } from "lucide-react";
 
 const StudentsPage = () => {
   const { students, isLoading, createStudent, updateStudent, deleteStudent } = useStudents();
@@ -130,11 +130,11 @@ const StudentsPage = () => {
           <Card className={`hover-glow cursor-pointer transition-all ${statusFilter === 'working' ? 'ring-2 ring-warning shadow-glow' : ''}`} onClick={() => setStatusFilter('working')}>
             <CardContent className="p-6">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-warning flex items-center justify-center">
-                  <UserX className="w-5 h-5 text-warning-foreground" />
+                <div className="w-10 h-10 rounded-full bg-success flex items-center justify-center">
+                  <Earth className="w-5 h-5 text-success-foreground" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-warning">{stats.working}</p>
+                  <p className="text-2xl font-bold text-success">{stats.working}</p>
                   <p className="text-sm text-muted-foreground">Working</p>
                 </div>
               </div>
@@ -148,7 +148,7 @@ const StudentsPage = () => {
                   <GraduationCap className="w-5 h-5 text-secondary-foreground" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-secondary">{stats.graduated}</p>
+                  <p className="text-2xl font-bold text-success">{stats.graduated}</p>
                   <p className="text-sm text-muted-foreground">Graduated</p>
                 </div>
               </div>
