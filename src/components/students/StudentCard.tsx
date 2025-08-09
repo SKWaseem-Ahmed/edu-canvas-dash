@@ -3,7 +3,7 @@ import { Student } from "@/types/student";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/enhanced-button";
-import { Edit, Trash2, User, Mail, Phone, GraduationCap } from "lucide-react";
+import { Edit, Trash2, Laptop, Mail, Phone, GraduationCap } from "lucide-react";
 
 interface StudentCardProps {
   student: Student;
@@ -35,7 +35,7 @@ export const StudentCard = ({ student, onEdit, onDelete, onView }: StudentCardPr
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center">
-                <User className="w-5 h-5 text-primary-foreground" />
+                <Laptop className="w-5 h-5 text-primary-foreground" />
               </div>
               <div>
                 <CardTitle className="text-lg group-hover:text-primary transition-colors">
