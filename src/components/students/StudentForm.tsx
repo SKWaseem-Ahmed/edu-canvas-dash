@@ -39,12 +39,29 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
   const currentStatus = watch('status');
 
   const onFormSubmit = (data: StudentFormData) => {
+    console.log('Form submission data:', data);
+    console.log('Current students:', students);
+    
     // Check for duplicate name and phone combination
-    const isDuplicate = students.some(existingStudent => 
-      existingStudent.id !== student?.id && // Don't compare with self when editing
-      existingStudent.name.toLowerCase() === data.name.toLowerCase() &&
-      existingStudent.phone === data.phone
-    );
+    const isDuplicate = students.some(existingStudent => {
+      const nameMatch = existingStudent.name.toLowerCase() === data.name.toLowerCase();
+      const phoneMatch = existingStudent.phone === data.phone;
+      const isNotSelfEdit = existingStudent.id !== student?.id;
+      
+      console.log(`Checking student ${existingStudent.name}:`, {
+        nameMatch,
+        phoneMatch,
+        isNotSelfEdit,
+        existingName: existingStudent.name,
+        newName: data.name,
+        existingPhone: existingStudent.phone,
+        newPhone: data.phone
+      });
+      
+      return isNotSelfEdit && nameMatch && phoneMatch;
+    });
+
+    console.log('Is duplicate found:', isDuplicate);
 
     if (isDuplicate) {
       setError('name', { message: 'A student with this name and phone number already exists' });
