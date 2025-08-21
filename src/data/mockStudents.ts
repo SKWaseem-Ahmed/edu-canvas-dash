@@ -4,7 +4,6 @@ export const mockStudents: Student[] = [
   {
     id: "1",
     name: "Alice Johnson",
-    email: "alice.johnson@email.com",
     phone: "+1 (555) 123-4567",
     age: 20,
     grade: "Sophomore",
@@ -14,7 +13,6 @@ export const mockStudents: Student[] = [
   {
     id: "2",
     name: "Bob Smith",
-    email: "bob.smith@email.com",
     phone: "+1 (555) 234-5678",
     age: 19,
     grade: "Freshman",
@@ -24,7 +22,6 @@ export const mockStudents: Student[] = [
   {
     id: "3",
     name: "Carol Williams",
-    email: "carol.williams@email.com",
     phone: "+1 (555) 345-6789",
     age: 22,
     grade: "Senior",
@@ -34,7 +31,6 @@ export const mockStudents: Student[] = [
   {
     id: "4",
     name: "David Brown",
-    email: "david.brown@email.com",
     phone: "+1 (555) 456-7890",
     age: 21,
     grade: "Junior",
@@ -44,7 +40,6 @@ export const mockStudents: Student[] = [
   {
     id: "5",
     name: "Emma Davis",
-    email: "emma.davis@email.com",
     phone: "+1 (555) 567-8901",
     age: 23,
     grade: "Graduate",
@@ -54,7 +49,6 @@ export const mockStudents: Student[] = [
   {
     id: "6",
     name: "Frank Miller",
-    email: "frank.miller@email.com",
     phone: "+1 (555) 678-9012",
     age: 18,
     grade: "Freshman",

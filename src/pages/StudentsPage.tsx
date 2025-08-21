@@ -22,9 +22,8 @@ const StudentsPage = () => {
   const filteredStudents = students.filter(student => {
     const searchLower = searchTerm.toLowerCase();
     const matchesSearch = !searchTerm || 
-                         student.name.toLowerCase().includes(searchLower) ||
-                         student.email.toLowerCase().includes(searchLower) ||
-                         student.phone.toLowerCase().includes(searchLower) ||
+                         (student.name && student.name.toLowerCase().includes(searchLower)) ||
+                         (student.phone && student.phone.toLowerCase().includes(searchLower)) ||
                          (student.grade && student.grade.toLowerCase().includes(searchLower)) ||
                          (student.address && student.address.toLowerCase().includes(searchLower));
     const matchesStatus = statusFilter === "all" || student.status === statusFilter;
@@ -171,7 +170,7 @@ const StudentsPage = () => {
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
             <Input
-              placeholder="Search by name, email, phone, grade, or address..."
+              placeholder="Search by name, phone, grade, or address..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10"
@@ -195,7 +194,6 @@ const StudentsPage = () => {
             <TableHeader>
               <TableRow>
                 <TableHead>Name</TableHead>
-                <TableHead>Email</TableHead>
                 <TableHead>Grade</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Phone</TableHead>
@@ -210,7 +208,6 @@ const StudentsPage = () => {
                     className="hover:bg-muted/50"
                   >
                     <TableCell className="font-medium">{student.name}</TableCell>
-                    <TableCell className="text-muted-foreground">{student.email}</TableCell>
                     <TableCell>{student.grade}</TableCell>
                     <TableCell>
                       <Badge 

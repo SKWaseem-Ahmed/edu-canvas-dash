@@ -21,7 +21,6 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
   const { register, handleSubmit, setValue, watch, formState: { errors }, setError } = useForm<StudentFormData>({
     defaultValues: student ? {
       name: student.name,
-      email: student.email,
       phone: student.phone,
       age: student.age,
       grade: student.grade,
@@ -29,7 +28,6 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
       status: student.status
     } : {
       name: '',
-      email: '',
       phone: '',
       age: 18,
       grade: '',
@@ -86,25 +84,6 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
                 />
                 {errors.name && (
                   <p className="text-sm text-destructive">{errors.name.message}</p>
-                )}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="email">Email Address</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  {...register('email', { 
-                    required: 'Email is required',
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: 'Invalid email address'
-                    }
-                  })}
-                  placeholder="student@example.com"
-                />
-                {errors.email && (
-                  <p className="text-sm text-destructive">{errors.email.message}</p>
                 )}
               </div>
 
