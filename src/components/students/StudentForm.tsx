@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { Student, StudentFormData } from "@/types/student";
+import { useStudents } from "@/hooks/useStudents";
 import { Button } from "@/components/ui/enhanced-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,9 +17,11 @@ interface StudentFormProps {
 }
 
 export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) => {
-  const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm<StudentFormData>({
+  const { students } = useStudents();
+  const { register, handleSubmit, setValue, watch, formState: { errors }, setError } = useForm<StudentFormData>({
     defaultValues: student ? {
       name: student.name,
+      email: student.email,
       phone: student.phone,
       age: student.age,
       grade: student.grade,
@@ -26,6 +29,7 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
       status: student.status
     } : {
       name: '',
+      email: '',
       phone: '',
       age: 18,
       grade: '',
@@ -37,6 +41,19 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
   const currentStatus = watch('status');
 
   const onFormSubmit = (data: StudentFormData) => {
+    // Check for duplicate name and phone combination
+    const isDuplicate = students.some(existingStudent => 
+      existingStudent.id !== student?.id && // Don't compare with self when editing
+      existingStudent.name.toLowerCase() === data.name.toLowerCase() &&
+      existingStudent.phone === data.phone
+    );
+
+    if (isDuplicate) {
+      setError('name', { message: 'A student with this name and phone number already exists' });
+      setError('phone', { message: 'A student with this name and phone number already exists' });
+      return;
+    }
+
     onSubmit(data);
   };
 
@@ -72,7 +89,24 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
                 )}
               </div>
 
-              
+              <div className="space-y-2">
+                <Label htmlFor="email">Email Address</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  {...register('email', { 
+                    required: 'Email is required',
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: 'Invalid email address'
+                    }
+                  })}
+                  placeholder="student@example.com"
+                />
+                {errors.email && (
+                  <p className="text-sm text-destructive">{errors.email.message}</p>
+                )}
+              </div>
 
               <div className="space-y-2">
                 <Label htmlFor="phone">Phone Number</Label>
