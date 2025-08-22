@@ -9,10 +9,10 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent} from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Plus, Search, Users, GraduationCap, UserCheck, Eye, Edit, Trash2, Loader2, Earth } from "lucide-react";
+import { Plus, Search, Users, GraduationCap, UserCheck, Eye, Edit, Loader2, Earth } from "lucide-react";
 
 const StudentsPage = () => {
-  const { students, isLoading, createStudent, updateStudent, deleteStudent } = useStudents();
+  const { students, isLoading, createStudent, updateStudent } = useStudents();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -25,7 +25,8 @@ const StudentsPage = () => {
                          (student.name && student.name.toLowerCase().includes(searchLower)) ||
                          (student.phone && student.phone.toLowerCase().includes(searchLower)) ||
                          (student.grade && student.grade.toLowerCase().includes(searchLower)) ||
-                         (student.address && student.address.toLowerCase().includes(searchLower));
+                         (student.address && student.address.toLowerCase().includes(searchLower)) ||
+                         (student.crossMain && student.crossMain.toLowerCase().includes(searchLower));
     const matchesStatus = statusFilter === "all" || student.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
@@ -43,16 +44,6 @@ const StudentsPage = () => {
     setIsFormOpen(false);
   };
 
-  const handleDeleteStudent = (studentId: string) => {
-    const student = students.find(s => s.id === studentId);
-    if (!student) return;
-
-    const confirmed = window.confirm(`Are you sure you want to delete ${student.name}?`);
-    if (confirmed) {
-      deleteStudent(studentId);
-    }
-  };
-
   const openEditForm = (student: Student) => {
     setSelectedStudent(student);
     setIsFormOpen(true);
@@ -65,9 +56,9 @@ const StudentsPage = () => {
 
   const getStats = () => {
     const studying = students.filter(s => s.status === 'studying').length;
-    const working = students.filter(s => s.status === 'working').length;
-    const graduated = students.filter(s => s.status === 'graduated').length;
-    return { studying, working, graduated, total: students.length };
+    const IT = students.filter(s => s.status === 'IT').length;
+    const nonIT = students.filter(s => s.status === 'non-IT').length;
+    return { studying, IT, nonIT, total: students.length };
   };
 
   const stats = getStats();
@@ -92,7 +83,7 @@ const StudentsPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <h1 className="text-4xl font-bold gradient-text mb-2">Student Management</h1>
+          <h1 className="text-4xl font-bold gradient-text mb-2">Students & People Management</h1>
           <p className="text-muted-foreground text-lg">Manage your students efficiently and beautifully</p>
         </motion.div>
 
@@ -131,29 +122,29 @@ const StudentsPage = () => {
             </CardContent>
           </Card>
 
-          <Card className={`hover-glow cursor-pointer transition-all ${statusFilter === 'working' ? 'ring-2 ring-warning shadow-glow' : ''}`} onClick={() => setStatusFilter('working')}>
+          <Card className={`hover-glow cursor-pointer transition-all ${statusFilter === 'IT' ? 'ring-2 ring-warning shadow-glow' : ''}`} onClick={() => setStatusFilter('IT')}>
             <CardContent className="p-6">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-success flex items-center justify-center">
                   <Earth className="w-5 h-5 text-success-foreground" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-success">{stats.working}</p>
-                  <p className="text-sm text-muted-foreground">Working</p>
+                  <p className="text-2xl font-bold text-success">{stats.IT}</p>
+                  <p className="text-sm text-muted-foreground">IT People</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className={`hover-glow cursor-pointer transition-all ${statusFilter === 'graduated' ? 'ring-2 ring-secondary shadow-glow' : ''}`} onClick={() => setStatusFilter('graduated')}>
+          <Card className={`hover-glow cursor-pointer transition-all ${statusFilter === 'non-IT' ? 'ring-2 ring-secondary shadow-glow' : ''}`} onClick={() => setStatusFilter('non-IT')}>
             <CardContent className="p-6">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gradient-secondary flex items-center justify-center">
                   <GraduationCap className="w-5 h-5 text-secondary-foreground" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-success">{stats.graduated}</p>
-                  <p className="text-sm text-muted-foreground">Graduated</p>
+                  <p className="text-2xl font-bold text-success">{stats.nonIT}</p>
+                  <p className="text-sm text-muted-foreground">Non-IT People</p>
                 </div>
               </div>
             </CardContent>
@@ -196,6 +187,7 @@ const StudentsPage = () => {
                 <TableHead>Name</TableHead>
                 <TableHead>Grade</TableHead>
                 <TableHead>Status</TableHead>
+                <TableHead>Cross/Main</TableHead>
                 <TableHead>Phone</TableHead>
                 <TableHead className="text-center">Actions</TableHead>
               </TableRow>
@@ -213,16 +205,21 @@ const StudentsPage = () => {
                       <Badge 
                         variant={
                           student.status === 'studying' ? 'default' : 
-                          student.status === 'working' ? 'secondary' : 
+                          student.status === 'IT' ? 'secondary' : 
                           'outline'
                         }
                         className={
                           student.status === 'studying' ? 'bg-success text-success-foreground' :
-                          student.status === 'working' ? 'bg-warning text-warning-foreground' :
+                          student.status === 'IT' ? 'bg-warning text-warning-foreground' :
                           'bg-secondary text-secondary-foreground'
                         }
                       >
                         {student.status.charAt(0).toUpperCase() + student.status.slice(1)}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <Badge variant="outline" className="bg-info/10 text-info border-info/20">
+                        {student.crossMain}
                       </Badge>
                     </TableCell>
                     <TableCell>{student.phone}</TableCell>
@@ -243,14 +240,6 @@ const StudentsPage = () => {
                           className="h-8 w-8 p-0"
                         >
                           <Edit className="h-4 w-4" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleDeleteStudent(student.id)}
-                          className="h-8 w-8 p-0 text-destructive hover:text-destructive"
-                        >
-                          <Trash2 className="h-4 w-4" />
                         </Button>
                       </div>
                     </TableCell>

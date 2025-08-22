@@ -8,16 +8,15 @@ import { Edit, Trash2, Laptop, Mail, Phone, GraduationCap } from "lucide-react";
 interface StudentCardProps {
   student: Student;
   onEdit: (student: Student) => void;
-  onDelete: (studentId: string) => void;
   onView: (student: Student) => void;
 }
 
-export const StudentCard = ({ student, onEdit, onDelete, onView }: StudentCardProps) => {
+export const StudentCard = ({ student, onEdit, onView }: StudentCardProps) => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'studying': return 'bg-success text-success-foreground';
-      case 'working': return 'bg-warning text-warning-foreground';
-      case 'graduated': return 'bg-primary text-primary-foreground';
+      case 'IT': return 'bg-warning text-warning-foreground';
+      case 'non-IT': return 'bg-primary text-primary-foreground';
       default: return 'bg-muted text-muted-foreground';
     }
   };
@@ -83,17 +82,6 @@ export const StudentCard = ({ student, onEdit, onDelete, onView }: StudentCardPr
               }}
             >
               <Edit className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={(e) => {
-                e.stopPropagation();
-                onDelete(student.id);
-              }}
-              className="text-destructive hover:text-destructive hover:bg-destructive/10"
-            >
-              <Trash2 className="w-4 h-4" />
             </Button>
           </div>
         </CardContent>

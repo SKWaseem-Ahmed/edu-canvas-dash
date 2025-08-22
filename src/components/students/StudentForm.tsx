@@ -25,14 +25,16 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
       age: student.age,
       grade: student.grade,
       address: student.address,
-      status: student.status
+      status: student.status,
+      crossMain: student.crossMain
     } : {
       name: '',
       phone: '',
       age: 18,
       grade: '',
       address: '',
-      status: 'studying' as const
+      status: 'studying' as const,
+      crossMain: 'MAIN' as const
     }
   });
 
@@ -149,8 +151,21 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="studying">Studying</SelectItem>
-                    <SelectItem value="working">Working</SelectItem>
-                    <SelectItem value="graduated">Graduated</SelectItem>
+                    <SelectItem value="IT">IT</SelectItem>
+                    <SelectItem value="non-IT">Non-IT</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="crossMain">Cross/Main</Label>
+                <Select value={watch('crossMain')} onValueChange={(value) => setValue('crossMain', value as any)}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select Cross/Main" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="CROSS">CROSS</SelectItem>
+                    <SelectItem value="MAIN">MAIN</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

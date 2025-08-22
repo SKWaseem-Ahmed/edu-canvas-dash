@@ -23,7 +23,8 @@ export type Database = {
           address: string
           enrollment_date: string
           gpa: number | null
-          status: 'studying' | 'working' | 'graduated'
+          status: 'studying' | 'IT' | 'non-IT'
+          cross_main: 'CROSS' | 'MAIN'
           created_at: string
           updated_at: string
         }
@@ -37,7 +38,8 @@ export type Database = {
           address: string
           enrollment_date: string
           gpa?: number | null
-          status: 'studying' | 'working' | 'graduated'
+          status: 'studying' | 'IT' | 'non-IT'
+          cross_main: 'CROSS' | 'MAIN'
           created_at?: string
           updated_at?: string
         }
@@ -51,7 +53,8 @@ export type Database = {
           address?: string
           enrollment_date?: string
           gpa?: number | null
-          status?: 'studying' | 'working' | 'graduated'
+          status?: 'studying' | 'IT' | 'non-IT'
+          cross_main?: 'CROSS' | 'MAIN'
           created_at?: string
           updated_at?: string
         }

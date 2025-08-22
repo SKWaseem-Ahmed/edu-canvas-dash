@@ -15,7 +15,7 @@ export const studentService = {
     
     return data.map(student => ({
       ...student,
-      enrollmentDate: student.enrollment_date
+      crossMain: student.cross_main
     }))
   },
 
@@ -24,6 +24,7 @@ export const studentService = {
       .from('students')
       .insert({
         ...studentData,
+        cross_main: studentData.crossMain,
       })
       .select()
       .single()
@@ -35,7 +36,7 @@ export const studentService = {
     
     return {
       ...data,
-      enrollmentDate: data.enrollment_date
+      crossMain: data.cross_main
     }
   },
 
@@ -44,6 +45,7 @@ export const studentService = {
       .from('students')
       .update({
         ...studentData,
+        cross_main: studentData.crossMain,
         updated_at: new Date().toISOString()
       })
       .eq('id', id)
@@ -57,7 +59,7 @@ export const studentService = {
     
     return {
       ...data,
-      enrollmentDate: data.enrollment_date
+      crossMain: data.cross_main
     }
   },
 

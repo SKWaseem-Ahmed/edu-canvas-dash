@@ -5,7 +5,8 @@ export interface Student {
   age: number | null;
   grade: string | null;
   address: string | null;
-  status: 'studying' | 'working' | 'graduated';
+  status: 'studying' | 'IT' | 'non-IT';
+  crossMain: 'CROSS' | 'MAIN';
 }
 
 export interface StudentFormData extends Omit<Student, 'id'> {}

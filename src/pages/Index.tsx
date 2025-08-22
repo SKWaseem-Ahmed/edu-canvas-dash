@@ -20,7 +20,7 @@ const Index = () => {
           </div>
           
           <h1 className="text-5xl md:text-6xl font-bold gradient-text mb-6">
-            Student Management
+            Students & People Management
             <br />
             For Tableegh
             <br />

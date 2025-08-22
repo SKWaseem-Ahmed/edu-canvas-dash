@@ -15,8 +15,8 @@ export const StudentDetails = ({ student, onClose, onEdit }: StudentDetailsProps
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'studying': return 'bg-success text-success-foreground';
-      case 'working': return 'bg-warning text-warning-foreground';
-      case 'graduated': return 'bg-primary text-primary-foreground';
+      case 'IT': return 'bg-warning text-warning-foreground';
+      case 'non-IT': return 'bg-primary text-primary-foreground';
       default: return 'bg-muted text-muted-foreground';
     }
   };
@@ -96,6 +96,16 @@ export const StudentDetails = ({ student, onClose, onEdit }: StudentDetailsProps
                   <div>
                     <p className="text-sm text-muted-foreground">Age</p>
                     <p className="font-medium">{student.age} years old</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+                  <GraduationCap className="w-5 h-5 text-primary" />
+                  <div>
+                    <p className="text-sm text-muted-foreground">Cross/Main</p>
+                    <Badge variant="outline" className="bg-info/10 text-info border-info/20">
+                      {student.crossMain}
+                    </Badge>
                   </div>
                 </div>
 

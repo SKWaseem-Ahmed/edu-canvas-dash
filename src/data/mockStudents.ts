@@ -8,7 +8,8 @@ export const mockStudents: Student[] = [
     age: 20,
     grade: "Sophomore",
     address: "123 Main Street, Springfield, IL 62701",
-    status: "studying"
+    status: "studying",
+    crossMain: "MAIN"
   },
   {
     id: "2",
@@ -17,7 +18,8 @@ export const mockStudents: Student[] = [
     age: 19,
     grade: "Freshman",
     address: "456 Oak Avenue, Chicago, IL 60601",
-    status: "studying"
+    status: "studying",
+    crossMain: "CROSS"
   },
   {
     id: "3",
@@ -26,7 +28,8 @@ export const mockStudents: Student[] = [
     age: 22,
     grade: "Senior",
     address: "789 Pine Road, Naperville, IL 60540",
-    status: "studying"
+    status: "studying",
+    crossMain: "MAIN"
   },
   {
     id: "4",
@@ -35,7 +38,8 @@ export const mockStudents: Student[] = [
     age: 21,
     grade: "Junior",
     address: "321 Elm Street, Peoria, IL 61601",
-    status: "working"
+    status: "IT",
+    crossMain: "CROSS"
   },
   {
     id: "5",
@@ -44,7 +48,8 @@ export const mockStudents: Student[] = [
     age: 23,
     grade: "Graduate",
     address: "654 Maple Drive, Rockford, IL 61101",
-    status: "graduated"
+    status: "non-IT",
+    crossMain: "MAIN"
   },
   {
     id: "6",
@@ -53,6 +58,7 @@ export const mockStudents: Student[] = [
     age: 18,
     grade: "Freshman",
     address: "987 Cedar Lane, Aurora, IL 60502",
-    status: "studying"
+    status: "studying",
+    crossMain: "CROSS"
   }
 ];
