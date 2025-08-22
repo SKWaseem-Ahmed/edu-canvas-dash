@@ -34,7 +34,7 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
       grade: '',
       address: '',
       status: 'studying' as const,
-      crossMain: 'MAIN' as const
+      crossMain: 'MAIN'
     }
   });
 
@@ -159,15 +159,14 @@ export const StudentForm = ({ student, onSubmit, onCancel }: StudentFormProps) =
 
               <div className="space-y-2">
                 <Label htmlFor="crossMain">Cross/Main</Label>
-                <Select value={watch('crossMain')} onValueChange={(value) => setValue('crossMain', value as any)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select Cross/Main" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="CROSS">CROSS</SelectItem>
-                    <SelectItem value="MAIN">MAIN</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Input
+                  id="crossMain"
+                  {...register('crossMain')}
+                  placeholder="Enter Cross or Main"
+                />
+                {errors.crossMain && (
+                  <p className="text-sm text-destructive">{errors.crossMain.message}</p>
+                )}
               </div>
             </div>
 

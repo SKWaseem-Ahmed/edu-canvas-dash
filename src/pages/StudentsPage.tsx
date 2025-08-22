@@ -218,9 +218,7 @@ const StudentsPage = () => {
                       </Badge>
                     </TableCell>
                     <TableCell>
-                      <Badge variant="outline" className="bg-info/10 text-info border-info/20">
-                        {student.crossMain}
-                      </Badge>
+                      <span className="font-medium">{student.crossMain}</span>
                     </TableCell>
                     <TableCell>{student.phone}</TableCell>
                     <TableCell>

@@ -24,7 +24,7 @@ export type Database = {
           enrollment_date: string
           gpa: number | null
           status: 'studying' | 'IT' | 'non-IT'
-          cross_main: 'CROSS' | 'MAIN'
+          cross_main: string
           created_at: string
           updated_at: string
         }
@@ -39,7 +39,7 @@ export type Database = {
           enrollment_date: string
           gpa?: number | null
           status: 'studying' | 'IT' | 'non-IT'
-          cross_main: 'CROSS' | 'MAIN'
+          cross_main: string
           created_at?: string
           updated_at?: string
         }
@@ -54,7 +54,7 @@ export type Database = {
           enrollment_date?: string
           gpa?: number | null
           status?: 'studying' | 'IT' | 'non-IT'
-          cross_main?: 'CROSS' | 'MAIN'
+          cross_main?: string
           created_at?: string
           updated_at?: string
         }

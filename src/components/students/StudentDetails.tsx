@@ -103,9 +103,7 @@ export const StudentDetails = ({ student, onClose, onEdit }: StudentDetailsProps
                   <GraduationCap className="w-5 h-5 text-primary" />
                   <div>
                     <p className="text-sm text-muted-foreground">Cross/Main</p>
-                    <Badge variant="outline" className="bg-info/10 text-info border-info/20">
-                      {student.crossMain}
-                    </Badge>
+                    <p className="font-medium">{student.crossMain}</p>
                   </div>
                 </div>
 
