@@ -1,4 +1,4 @@
-import { supabase } from '@/lib/supabase'
+import { supabase } from '@/integrations/supabase/client'
 import type { Student, StudentFormData } from '@/types/student'
 
 export const studentService = {
@@ -15,7 +15,8 @@ export const studentService = {
     
     return data.map(student => ({
       ...student,
-      crossMain: student.cross_main
+      crossMain: student.cross_main,
+      status: student.status as 'studying' | 'IT' | 'non-IT'
     }))
   },
 
@@ -36,7 +37,8 @@ export const studentService = {
     
     return {
       ...data,
-      crossMain: data.cross_main
+      crossMain: data.cross_main,
+      status: data.status as 'studying' | 'IT' | 'non-IT'
     }
   },
 
@@ -59,7 +61,8 @@ export const studentService = {
     
     return {
       ...data,
-      crossMain: data.cross_main
+      crossMain: data.cross_main,
+      status: data.status as 'studying' | 'IT' | 'non-IT'
     }
   },
 
