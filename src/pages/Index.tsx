@@ -2,11 +2,13 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/enhanced-button";
 import { GraduationCap, ArrowRight } from "lucide-react";
+import { Header } from "@/components/layout/Header";
 import "../index.css";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-subtle">
+      <Header />
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16">
         <motion.div

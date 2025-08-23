@@ -14,12 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      profiles: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       students: {
         Row: {
           address: string | null
           age: number
           created_at: string
-          "Cross/Main": string | null
+          cross_main: string | null
           grade: string | null
           id: string
           name: string
@@ -31,7 +58,7 @@ export type Database = {
           address?: string | null
           age: number
           created_at?: string
-          "Cross/Main"?: string | null
+          cross_main?: string | null
           grade?: string | null
           id?: string
           name: string
@@ -43,7 +70,7 @@ export type Database = {
           address?: string | null
           age?: number
           created_at?: string
-          "Cross/Main"?: string | null
+          cross_main?: string | null
           grade?: string | null
           id?: string
           name?: string

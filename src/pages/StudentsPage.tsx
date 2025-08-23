@@ -4,6 +4,7 @@ import { Student, StudentFormData } from "@/types/student";
 import { useStudents } from "@/hooks/useStudents";
 import { StudentForm } from "@/components/students/StudentForm";
 import { StudentDetails } from "@/components/students/StudentDetails";
+import { Header } from "@/components/layout/Header";
 import { Button } from "@/components/ui/enhanced-button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -65,10 +66,13 @@ const StudentsPage = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-subtle flex items-center justify-center">
-        <div className="flex items-center gap-2">
-          <Loader2 className="h-6 w-6 animate-spin text-primary" />
-          <span className="text-lg">Loading students...</span>
+      <div className="min-h-screen bg-gradient-subtle">
+        <Header />
+        <div className="flex items-center justify-center pt-20">
+          <div className="flex items-center gap-2">
+            <Loader2 className="h-6 w-6 animate-spin text-primary" />
+            <span className="text-lg">Loading students...</span>
+          </div>
         </div>
       </div>
     );
@@ -76,6 +80,7 @@ const StudentsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
+      <Header />
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <motion.div
@@ -161,7 +166,7 @@ const StudentsPage = () => {
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
             <Input
-              placeholder="Search by name, phone, grade, or address..."
+              placeholder="Search by name, phone, grade, address, or cross/main..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10"
