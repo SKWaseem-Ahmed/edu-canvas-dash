@@ -39,15 +39,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const signUp = async (email: string, password: string, fullName: string) => {
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
+        emailRedirectTo: undefined,
         data: {
           full_name: fullName,
         }
       }
     });
+    
+    // If signup is successful and no email confirmation is needed, user should be logged in
+    if (data.user && !error) {
+      console.log('User signed up successfully:', data.user);
+    }
+    
     return { error };
   };
 

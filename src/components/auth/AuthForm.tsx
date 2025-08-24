@@ -46,8 +46,8 @@ export const AuthForm: React.FC<AuthFormProps> = ({ mode, onToggleMode }) => {
           });
         } else {
           toast({
-            title: "Success!",
-            description: "Please check your email to confirm your account",
+            title: "Account Created!",
+            description: "You have successfully created your account",
           });
         }
       } else {
